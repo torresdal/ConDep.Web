@@ -1,0 +1,346 @@
+/* ===== BASE STYLES ===== */
+h1,
+h2,
+h3 {
+  color: #999999;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+input {
+  background-color: #f6f6f6 !important;
+}
+input:focus {
+  background-color: #ffffff !important;
+}
+thead {
+  background-color: #142b38;
+  font-size: 9pt;
+  color: #ddd;
+}
+table {
+    border-color: #ebeab9;
+}
+/* ========================== */
+
+/* ===== LAYOUT STYLES ===== */
+.admin-menu-area {
+  position: fixed;
+  width: 152px;
+  margin-top: 10px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+.content {
+  padding: 1px 40px 0 40px;
+  margin-top: 100px;
+}
+
+
+
+
+.executions > li {
+  margin: 5px 0;
+  padding: 5px 15px 7px 15px;
+  border: 1px solid #ebeab9;
+  background-color: #efefc9;
+}
+.executions > li.pagination {
+  background-color: transparent;
+  border: none;
+}
+.application {
+  margin-top: 30px;
+}
+.application h3 {
+  border-bottom: 1px solid #999999;
+}
+.environment-list {
+  position: absolute;
+  bottom: 0;
+  left: 400px;
+}
+.config-list {
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+}
+.pipeline {
+  clear: both;
+  margin: 10px 20px;
+}
+.pipeline li {
+  margin-bottom: 4px;
+}
+.execution .progress {
+  width: 150px;
+  display: inline-block;
+  height: 12px;
+  margin-bottom: 3px;
+  vertical-align: bottom;
+}
+.summary {
+  margin-left: 20px;
+  color: #808080;
+}
+.panel-title {
+  color: #999999;
+  font-size: 14pt;
+  font-weight: bold;
+}
+.panel-buttons {
+  bottom: 0;
+  float: right;
+}
+
+/* Admin Styles */
+.admin-header {
+  top: 96px;
+  left: 40px;
+  right: 40px;
+  position: fixed;
+  z-index: 998;
+  padding-top: 15px;
+  background-color: #f3f2d5;
+}
+.admin-header h3 {
+  border-bottom: 1px solid #999999;
+}
+
+/* ===== ADMIN MENU ===== */
+.admin-menu .active a, 
+.admin-menu .active a:hover {
+  background-color: #efefc9 !important;
+  margin-right: -10px !important;
+  border: 1px solid #ebeab9 !important;
+  border-right: 0px !important;
+  border-left: 3px solid #61c10b !important;
+  color: #999 !important;
+  font-weight: bold;
+}
+.admin-menu a:hover {
+  border: 1px solid #ebeab9 !important;
+  border-left: 3px solid #61c10b !important;
+  background-color: transparent !important;
+}
+.admin-menu a {
+  border: 1px solid transparent !important;
+  border-left: 3px solid transparent !important;
+}
+.menu-icon {
+  width: 16px;
+  text-align: center;
+  margin: 0 6px 0 0;
+}
+.admin-menu ul>.child {
+  margin-left: 10px;
+}
+
+/* Active Menu Styles */
+.active .fa {
+  color: #61c10b;
+}
+.active-icon {
+  color: #61c10b;
+}
+.delete-icon {
+  color: #d01111;
+}
+
+
+
+/*Admin Main Area Styles */
+.admin-main {
+  margin-top: 67px;
+  padding: 20px 20px 20px 20px;
+  margin-left: 160px;
+  background-color: #efefc9;
+  min-height: 300px;
+  border: 1px solid #ebeab9;
+  border-radius: 6px;
+}
+.admin-main-top-border {
+  top: 168px;
+  left: 205px;
+  right: 45px;
+  height: 1px;
+  position: fixed;
+  z-index: 998;
+  background-color: #ebeab9;
+}
+/*
+.admin-main .tab-content {
+  background-color: #f3f2d5;
+  border: 1px solid #ebeab9;
+  border-top: 0px;
+  padding: 10px 10px 10px 10px;
+  padding-top: 50px !important;
+}
+.admin-main .nav-tabs .active a {
+  border: 1px solid #ebeab9 !important;
+  border-bottom: 1px solid transparent !important;
+}
+
+.admin-main .nav-tabs {
+  background-color: #f3f2d5;
+  right: 70px;
+  left: 201px;
+}
+.admin-main-heading {
+  padding: 10px 0 0 0;
+  font-size: 15pt;
+  font-weight: bold;
+  color: #999999;
+  margin-bottom: 20px;
+}
+*/
+
+.admin-action-button {
+  margin-top: -20px;
+}
+.heading-button {
+  position: absolute;
+  right: 20px;
+}
+
+/* Footer Styles */
+.footer {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  padding-right: 40px;
+  background-color: #142b38;
+  border-color: #0b1820;
+  color: #777777;
+  text-align: right;
+  font-size: 8pt;
+}
+.footer a,
+.footer a:hover,
+.footer a:focus,
+.footer a:visited,
+.footer {
+  color: #777777;
+}
+
+/* Help Icon Styles */
+.help {
+  margin-top: -20px;
+  position: fixed;
+  font-size: 18pt;
+  right: 50px;
+  color: #777777;
+}
+/*
+.admin-group {
+  padding: 15px 15px 0 15px;
+  margin: 30px 10px 0 10px;
+  border-top: 1px solid #a6a6a6;
+}
+.admin-group-header {
+  position: absolute;
+  margin: -26px 0 0 10px;
+  padding: 0 10px 0 10px;
+  background-color: #f3f2d5;
+  color: #a6a6a6;
+}
+*/
+
+/*.form-group input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}*/
+.admin-main .panel-title {
+  font-size: 9pt;
+  color: #ddd;
+}
+
+.admin-main .panel-heading {
+  background-color: #142b38;
+  border-color: #ebeab9;
+}
+.admin-main .panel-body {
+  background-color: #f3f2d5;
+}
+.wrap-table {
+  word-wrap: break-word;      /* IE 5+ */
+  table-layout: fixed;
+  word-break: break-all;
+}
+.min-width {
+  width:1%;
+  white-space:nowrap;
+}
+/*
+.table-col-btns td:first-child,
+.table-col-btns th:first-child {
+    width:1%;
+    white-space:nowrap;
+}
+*/
+tr:hover {
+  cursor: pointer;
+}
+/*.table-button-column {
+    width:1%;
+    white-space:nowrap;
+}*/
+.admin-btn-delete {
+  float:right;
+}
+
+td input {
+  min-width: 100px;
+}
+
+/* ========================= */
+/* ===== WIZARD STYLES ===== */
+/* ========================= */
+.wizard {
+  width: 80%;
+}
+.wizard-page {
+  min-height: 320px;
+  max-height: 400px;
+  /*
+  max-height: 320px;
+  */
+  overflow-y: auto;
+  border: 1px solid #ebeab9 !important;
+  background-color: #efefc9;
+  margin: 15px 10px 10px -2px;
+  border-radius: 6px;
+}
+.wizard-header {
+  margin: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #999999;
+  min-height: 16.428571429px;
+  color: #999999;
+}
+.wizard-nav {
+  width: 130px;
+  float: left;
+  display: inline;
+  margin: 15px 10px;
+  height: 100%;
+  position: relative;
+  z-index: 997;
+}
+.wizard-footer {
+  height: 50px;
+  margin: 25px 10px 10px 10px;
+}
+.wizard-workflow {
+  float: right;
+}
+.wizard-content {
+  background-color: #f3f2d5;
+}
