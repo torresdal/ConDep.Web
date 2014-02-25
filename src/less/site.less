@@ -1,6 +1,9 @@
 @import "bootstrap/variables.less";
 
 /* ===== BASE STYLES ===== */
+body {
+	height: 100%;
+}
 h1, h2, h3{
     color: @gray-light;
 }
@@ -175,33 +178,6 @@ section{
   z-index: 998;
   background-color: #ebeab9;
 }
-/*
-.admin-main .tab-content {
-  background-color: #f3f2d5;
-  border: 1px solid #ebeab9;
-  border-top: 0px;
-  padding: 10px 10px 10px 10px;
-  padding-top: 50px !important;
-}
-.admin-main .nav-tabs .active a {
-  border: 1px solid #ebeab9 !important;
-  border-bottom: 1px solid transparent !important;
-}
-
-.admin-main .nav-tabs {
-  background-color: #f3f2d5;
-  right: 70px;
-  left: 201px;
-}
-.admin-main-heading {
-  padding: 10px 0 0 0;
-  font-size: 15pt;
-  font-weight: bold;
-  color: #999999;
-  margin-bottom: 20px;
-}
-*/
-
 .admin-action-button {
   margin-top: -20px;
 }
@@ -239,25 +215,6 @@ section{
   right: 50px;
   color: #777777;
 }
-/*
-.admin-group {
-  padding: 15px 15px 0 15px;
-  margin: 30px 10px 0 10px;
-  border-top: 1px solid #a6a6a6;
-}
-.admin-group-header {
-  position: absolute;
-  margin: -26px 0 0 10px;
-  padding: 0 10px 0 10px;
-  background-color: #f3f2d5;
-  color: #a6a6a6;
-}
-*/
-
-/*.form-group input {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}*/
 .admin-main .panel-title {
   font-size: 9pt;
   color: #ddd;
@@ -279,21 +236,10 @@ section{
   width:1%;
   white-space:nowrap;
 }
-/*
-.table-col-btns td:first-child,
-.table-col-btns th:first-child {
-    width:1%;
-    white-space:nowrap;
-}
-*/
 tr:hover {
   cursor: pointer;
 }
-/*.table-button-column {
-    width:1%;
-    white-space:nowrap;
-}*/
-.admin-btn-delete {
+.l-right {
   float:right;
 }
 
