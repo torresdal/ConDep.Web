@@ -5,11 +5,12 @@ module.exports = function(grunt) {
         less: {
             dev: {
                 options: {
-                    paths: ['src/less', 'src/less/bootstrap'],
+                    paths: ['src/less', 'src/less/bootstrap', 'src/less/font-awesome'],
                 },
                 files: {
-                    'client/css/site.css': 'src/less/site.less',
-                    'client/css/bootstrap.css': 'src/less/bootstrap.less'
+                    'client/css/main.css': 'src/less/main.less',
+                    'client/css/bootstrap.css': 'src/less/bootstrap.less',
+                    'client/css/font-awesome.css': 'src/less/font-awesome.less'
                 }
             },
             production: {
@@ -18,7 +19,7 @@ module.exports = function(grunt) {
                     yuicompress: true
                 },
                 files: {
-                    'client/css/site.css': 'src/less/site.less'
+                    'client/css/site2.css': 'src/less/site.less'
                 }
             }
         },

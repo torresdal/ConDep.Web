@@ -20,31 +20,26 @@ thead {
   color: #ddd;
 }
 table {
-    border-color: #ebeab9;
+  border-color: #ebeab9;
 }
-/* ========================== */
-
 /* ===== LAYOUT STYLES ===== */
 .admin-menu-area {
   position: fixed;
   width: 152px;
   margin-top: 10px;
 }
-
 .navbar {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 999;
 }
 .content {
   padding: 1px 40px 0 40px;
   margin-top: 100px;
 }
-
-
-
-
+section {
+  padding: 100px 40px 0 40px;
+}
 .executions > li {
   margin: 5px 0;
   padding: 5px 15px 7px 15px;
@@ -98,7 +93,6 @@ table {
   bottom: 0;
   float: right;
 }
-
 /* Admin Styles */
 .admin-header {
   top: 96px;
@@ -112,9 +106,8 @@ table {
 .admin-header h3 {
   border-bottom: 1px solid #999999;
 }
-
 /* ===== ADMIN MENU ===== */
-.admin-menu .active a, 
+.admin-menu .active a,
 .admin-menu .active a:hover {
   background-color: #efefc9 !important;
   margin-right: -10px !important;
@@ -138,10 +131,9 @@ table {
   text-align: center;
   margin: 0 6px 0 0;
 }
-.admin-menu ul>.child {
+.admin-menu ul > .child {
   margin-left: 10px;
 }
-
 /* Active Menu Styles */
 .active .fa {
   color: #61c10b;
@@ -152,9 +144,6 @@ table {
 .delete-icon {
   color: #d01111;
 }
-
-
-
 /*Admin Main Area Styles */
 .admin-main {
   margin-top: 67px;
@@ -200,7 +189,6 @@ table {
   margin-bottom: 20px;
 }
 */
-
 .admin-action-button {
   margin-top: -20px;
 }
@@ -208,7 +196,6 @@ table {
   position: absolute;
   right: 20px;
 }
-
 /* Footer Styles */
 .footer {
   position: fixed;
@@ -229,7 +216,6 @@ table {
 .footer {
   color: #777777;
 }
-
 /* Help Icon Styles */
 .help {
   margin-top: -20px;
@@ -252,7 +238,6 @@ table {
   color: #a6a6a6;
 }
 */
-
 /*.form-group input {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -261,7 +246,6 @@ table {
   font-size: 9pt;
   color: #ddd;
 }
-
 .admin-main .panel-heading {
   background-color: #142b38;
   border-color: #ebeab9;
@@ -270,13 +254,15 @@ table {
   background-color: #f3f2d5;
 }
 .wrap-table {
-  word-wrap: break-word;      /* IE 5+ */
+  word-wrap: break-word;
+  /* IE 5+ */
+
   table-layout: fixed;
   word-break: break-all;
 }
 .min-width {
-  width:1%;
-  white-space:nowrap;
+  width: 1%;
+  white-space: nowrap;
 }
 /*
 .table-col-btns td:first-child,
@@ -293,13 +279,11 @@ tr:hover {
     white-space:nowrap;
 }*/
 .admin-btn-delete {
-  float:right;
+  float: right;
 }
-
 td input {
   min-width: 100px;
 }
-
 /* ========================= */
 /* ===== WIZARD STYLES ===== */
 /* ========================= */
@@ -309,9 +293,6 @@ td input {
 .wizard-page {
   min-height: 320px;
   max-height: 400px;
-  /*
-  max-height: 320px;
-  */
   overflow-y: auto;
   border: 1px solid #ebeab9 !important;
   background-color: #efefc9;
