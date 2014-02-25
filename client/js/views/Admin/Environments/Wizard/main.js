@@ -18,6 +18,10 @@ ConDep.Admin_Environments_Wizard_Main = Backbone.Marionette.Layout.extend({
         'click a[href=#lb]': function (e) {
             e.preventDefault();
             this.showLoadBalancer(e);
+        },
+        'click a[href=#tier]': function (e) {
+            e.preventDefault();
+            this.showTier(e);
         }
     },
 
@@ -41,6 +45,16 @@ ConDep.Admin_Environments_Wizard_Main = Backbone.Marionette.Layout.extend({
     showTiers: function(caller) {
         this.selectMenuItem(caller);
         this.wizPageRegion.show(this.tiersView);
+    },
+
+    showTier: function(caller) {
+        this.selectMenuItem(caller);
+
+        var index = $(caller.target).data('tier');
+        var tiers = this.model.get("Tiers");
+        var tier = tiers.models[index];
+        var tierView = new ConDep.Admin_Environments_Wizard_TierEdit({ model: tier });
+        this.wizPageRegion.show(tierView);
     },
 
     showLoadBalancer: function(caller) {
