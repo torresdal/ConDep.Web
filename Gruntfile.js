@@ -31,7 +31,7 @@ module.exports = function(grunt) {
                 livereload: true
             },
             css: {
-                files: ['src/less/*.less', 'src/less/bootstrap/*.less'],
+                files: ['src/less/*.less', 'src/less/bootstrap/*.less', 'src/less/font-awesome/*.less'],
                 tasks: ['less:dev'],
                 options: {
                     interrupt: true
