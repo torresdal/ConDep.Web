@@ -2,10 +2,68 @@
 
 module.exports = function(grunt) {
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        browserify: {
+            js: {
+                // A single entry point for our app
+                src: 'src/js/app.js',
+                // Compile to a single file to add a script tag for in your HTML
+                dest: 'client/dist.js',
+                options: {
+                    debug: true,
+                    transform: ['hbsfy'],
+                    shim: {
+                        jquery: {
+                            path: 'node_modules/jquery/dist/jquery.js',
+                            exports: '$'
+                        },
+                        underscore: {
+                            path: 'node_modules/underscore/underscore.js',
+                            exports: '_'
+                        },
+                        backbone: {
+                            path: 'node_modules/backbone/backbone.js',
+                            exports: 'Backbone',
+                            depends: {
+                                underscore: 'underscore',
+                                jquery: '$'
+                            }
+                        },
+                        'backbone.relational': {
+                            path: 'node_modules/backbone-relational/backbone-relational.js',
+                            exports: 'BackboneRelational',
+                            depends: {
+                                backbone: 'Backbone'
+                            }
+                        },
+                        'backbone.wreqr': {
+                            path: 'node_modules/backbone.wreqr/lib/backbone.wreqr.js',
+                            exports: 'Backbone.Wreqr',
+                            depends: {
+                                backbone: 'Backbone'
+                            }
+                        },
+                        'backbone.marionette': {
+                            path: 'node_modules/backbone.marionette/lib/backbone.marionette.js',
+                            exports: 'Marionette',
+                            depends: {
+                                jquery: '$',
+                                backbone: 'Backbone',
+                                underscore: '_'
+                            }
+                        }
+                    }
+                }
+            },
+        },
         less: {
             dev: {
                 options: {
-                    paths: ['src/less', 'src/less/bootstrap', 'src/less/font-awesome'],
+                    paths: [
+                        'src/less', 
+                        'src/less/bootstrap', 
+                        'src/less/font-awesome'
+                    ],
                 },
                 files: {
                     'client/css/main.css': 'src/less/main.less',
@@ -36,7 +94,12 @@ module.exports = function(grunt) {
                 options: {
                     interrupt: true
                 }
-            }/*,
+            },
+            browserify: {
+                files: ["src/js/**/*.js", "src/js/**/*.hbs"],
+                tasks: ["browserify"]
+            }
+            /*,
             scripts: {
                 files: ['client/js/*.js'],
                 tasks: ['livereload'],
@@ -58,5 +121,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     //grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-browserify');
     grunt.registerTask('default', 'watch');
 };

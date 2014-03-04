@@ -1,16 +1,37 @@
 {
-  "name": "condep-design-prototype",
+  "name": "ConDep.Web",
+  "description": "",
   "version": "0.0.1",
+  "author": "Jon Arild Tørresdal",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/torresdal/ConDep.Web.git"
+  },
+  "scripts": {
+    "start": "node server/main.js"
+  },
   "dependencies": {
     "express": "3.1.1",
-    "less": "1.3.3"
+    "less": "1.3.3",
+    "backbone": "~1.1.2",
+    "bootstrap": "0.0.2",
+    "backbone.marionette": "~1.6.2",
+    "backbone-relational": "~0.8.6",
+    "backbone.stickit": "~0.7.0",
+    "backbone.validation": "~0.7.1",
+    "handlebars": "~1.3.0",
+    "underscore": "~1.6.0",
+    "browserify-handlebars": "~0.2.0",
+    "hbsfy": "~1.3.2",
+    "jquery": "~2.1.0",
+    "backbone.wreqr": "~1.0.0"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-less": "~0.6.1",
-    "grunt-contrib-watch": "~0.5.3"
-  },
-  "scripts": {
-    "start": "server/main.js"
+    "grunt-contrib-watch": "~0.5.3",
+    "browserify": "~3.31.2",
+    "grunt-browserify": "~1.3.1",
+    "hbsfy": "~1.3.2"
   }
 }
