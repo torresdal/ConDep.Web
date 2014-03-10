@@ -1,4 +1,4 @@
-var Marionette = require('backbone.marionette'),
+var Marionette              = require('backbone.marionette'),
     EnvironmentsView        = require('./environments/main'),
     LoadBalancersView       = require('./loadbalancers/load_balancers_view'),
     AdminView               = require('./admin_view'),
@@ -9,7 +9,8 @@ var Marionette = require('backbone.marionette'),
     SettingsView            = require('./settings/settings_view'),
     HelpView                = require('./help/help_view'),
     NavView                 = require('./nav/nav_view'),
-		$ = require('jquery');
+		$                       = require('jquery'),
+    LoadBalancers           = require('./loadbalancers/models/loadBalancerCollection');
 
 module.exports = Marionette.Controller.extend({
   showHome: function() {
@@ -18,75 +19,78 @@ module.exports = Marionette.Controller.extend({
   },
 
   showLoadbalancers: function () {
+    var collection = new LoadBalancers();
+    collection.fetch();
+
     this.showNav();
-    
     this.selectMenuItem("#loadbalancers");
-    var view = new LoadBalancersView();
-    this.adminView.mainRegion.show(view);
+
+    this.loadBalancerView = this.loadBalancerView || new LoadBalancersView({collection: collection});
+    this.adminView.mainRegion.show(this.loadBalancerView);
   },
 
   showTiers: function () {
     this.showNav();
     
     this.selectMenuItem("#tiers");
-    var view = new TiersView();
-    this.adminView.mainRegion.show(view);
+    this.tiersView = this.tiersView || new TiersView();
+    this.adminView.mainRegion.show(this.tiersView);
   },
 
   showEnvironments: function () {
     this.showNav();
 
     this.selectMenuItem("#environments");
-    var view = new EnvironmentsView();
-    this.adminView.mainRegion.show(view);
+    this.environmentsView = this.environmentsView || new EnvironmentsView();
+    this.adminView.mainRegion.show(this.environmentsView);
   },
 
   showModules: function () {
     this.showNav();
 
     this.selectMenuItem("#modules");
-    var view = new ModulesView();
-    this.adminView.mainRegion.show(view);
+    this.modulesView = this.modulesView || new ModulesView();
+    this.adminView.mainRegion.show(this.modulesView);
   },
 
   showPipelines: function () {
     this.showNav();
 
     this.selectMenuItem("#pipelines");
-    var view = new PipelinesView();
-    this.adminView.mainRegion.show(view);
+    this.pipelinesView = this.pipelinesView || new PipelinesView();
+    this.adminView.mainRegion.show(this.pipelinesView);
   },
 
   showApplications: function () {
     this.showNav();
 
     this.selectMenuItem("#applications");
-    var view = new ApplicationsView();
-    this.adminView.mainRegion.show(view);
+    this.applicationsView = this.applicationsView || new ApplicationsView();
+    this.adminView.mainRegion.show(this.applicationsView);
   },
 
   showSettings: function () {
     this.showNav();
 
     this.selectMenuItem("#settings");
-    var view = new SettingsView();
-    this.adminView.mainRegion.show(view);
+    this.settingsView = this.settingsView || new SettingsView();
+    this.adminView.mainRegion.show(this.settingsView);
   },
 
   showHelp: function () {
     this.showNav();
 
     this.selectMenuItem("#help");
-    var view = new HelpView();
-    this.adminView.mainRegion.show(view);
+    this.helpView = this.helpView || new HelpView();
+    this.adminView.mainRegion.show(this.helpView);
   },
 
   showNav: function() {
-    this.adminView = new AdminView();
+    this.adminView = this.adminView || new AdminView();
     ConDep.appLayout.mainRegion.show(this.adminView);
 
-    var navView = new NavView();
-    this.adminView.navRegion.show(navView);
+    this.navView = this.navView || new NavView();
+    this.adminView.navRegion.show(this.navView);
   },
 
   selectMenuItem: function (id) {

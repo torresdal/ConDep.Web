@@ -2,9 +2,7 @@ var Backbone        = require('backbone'),
     Marionette      = require('backbone.marionette'),
     Handlebars      = require('handlebars'),
     HomeView        = require('./views/home');
-    // AdminView       = require('./views/admin/main'),
-    // Router          = require('./router'),
-    // Controller      = require('./controller');
+    // rivets          = require('rivets');
 
 module.exports = ConDep = function ConDep() {};
 
@@ -18,6 +16,8 @@ ConDep.prototype.start = function(){
 
     ConDep.views = {};
     ConDep.models = {};
+    // ConDep.ApiRoot = "http://10.70.148.195/condepserver/api";
+    ConDep.ApiRoot = "http://10.0.1.110/condepserver/api";
 
     ConDep.navigate = function(route,  options){
       options || (options = {});
@@ -41,8 +41,9 @@ ConDep.prototype.start = function(){
             }
         });
 
-        require('./views/navigation/main');
-
+        var nav = require('./views/navigation/main');
+        ConDep.core.addInitializer(nav);
+        
         ConDep.appLayout = new ConDep.core.AppLayout({el: "#content"})
     });
 

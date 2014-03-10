@@ -1,0 +1,10 @@
+{
+  "name": "ConDep.Web",
+  "version": "1.0.0",
+  "main": "client/css/main.css",
+  "dependencies": {
+    "bootstrap": "~3.1.1",
+    "rivets-backbone-adapter": "~1.1.1",
+    "backbone.syphon": "~0.4.1"
+  }
+}

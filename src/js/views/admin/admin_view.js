@@ -1,7 +1,5 @@
 var Marionette              = require('backbone.marionette'),
-    adminTemplate           = require('./admin_template.hbs'),
-    AdminRouter             = require('./router'),
-    AdminController         = require('./controller');
+    adminTemplate           = require('./admin_template.hbs');
 
 module.exports = Marionette.Layout.extend({
 
@@ -14,7 +12,6 @@ module.exports = Marionette.Layout.extend({
 
     onRender: function(){
         ConDep.core.execute("set:active:nav", "admin");
-        this.delegateEvents();
     }
     
 });

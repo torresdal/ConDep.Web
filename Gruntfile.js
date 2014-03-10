@@ -12,6 +12,9 @@ module.exports = function(grunt) {
                 options: {
                     debug: true,
                     transform: ['hbsfy'],
+                    alias: [
+                        "./src/js/views/admin/common/modal/modal_view:modal"
+                    ],
                     shim: {
                         jquery: {
                             path: 'node_modules/jquery/dist/jquery.js',
@@ -50,6 +53,31 @@ module.exports = function(grunt) {
                                 jquery: '$',
                                 backbone: 'Backbone',
                                 underscore: '_'
+                            }
+                        },
+                        'backbone.stickit': {
+                            path: 'node_modules/backbone.stickit/backbone.stickit.js',
+                            exports: null,
+                            depends: {
+                                jquery: '$',
+                                underscore: '_',
+                                backbone: 'Backbone'
+                            }
+                        },
+                        'backbone.syphone': {
+                            path: 'bower_components/backbone.syphon/lib/backbone.syphon.js',
+                            exports: 'Backbone.Syphon',
+                            depends: {
+                                jquery: '$',
+                                underscore: '_',
+                                backbone: 'Backbone'
+                            }
+                        },
+                        bootstrap: {
+                            path: 'bower_components/bootstrap/dist/js/bootstrap.min.js',
+                            exports: 'Bootstrap',
+                            depends: {
+                                jquery: '$'
                             }
                         }
                     }
@@ -122,5 +150,6 @@ module.exports = function(grunt) {
     //grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-browserify');
+    //grunt.loadNpmTasks('grunt-browserify-bower');
     grunt.registerTask('default', 'watch');
 };
