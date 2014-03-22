@@ -3,5 +3,9 @@ var Marionette      = require('backbone.marionette'),
 
 module.exports = Marionette.ItemView.extend({
   template: template,
-  tagName: "tr"
+  tagName: "tr",
+
+  onRender: function() {
+    $('#progressMessage').hide();
+  }
 });

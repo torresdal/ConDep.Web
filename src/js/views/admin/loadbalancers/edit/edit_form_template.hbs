@@ -1,28 +1,58 @@
-<div class="yalla-form">
-  <div class="form-group">
-    <label>Name</label>
+<div class="form-group">
+  <label class="col-sm-3">Name</label>
+  <div class="col-sm-9">
     <input type="text" class="form-control" name="name" value="{{name}}">
   </div>
-  <div class="form-group">
-    <label>Provider</label>
+  <p class="help-block validation"></p>
+</div>
+<div class="form-group">
+  <label class="col-sm-3">Provider</label>
+  <div class="col-sm-9">
     <input type="text" class="form-control" name="provider" value="{{provider}}">
-    <p class="help-block">To add more providers, check out Load Balancer providers under Settings.</p>
+    <p class="help-block validation"></p>
+    <p class="help-block">The Assembly name of the provider. To add more providers, check out Load Balancer providers under Settings.</p>
   </div>
-  <div class="form-group">
-    <label>User</label>
-    <input type="text" class="form-control" name="username" value="{{username}}">
+</div>
+<div class="form-group">
+  <label class="col-sm-3">User</label>
+  <div class="col-sm-9">
+    <input type="text" class="form-control" name="userName" value="{{userName}}">
+    <p class="help-block validation"></p>
     <p class="help-block">This is the user to interact with the load balancer.</p>
   </div>
-  <div class="form-group">
-    <label>Password</label>
+</div>
+<div class="form-group">
+  <label class="col-sm-3">Password</label>
+  <div class="col-sm-9">
     <input type="password" class="form-control" name="password" value="{{password}}">
+    <p class="help-block validation"></p>
   </div>
-  <div class="form-group">
-    <label>Suspend Strategy</label>
-    <input type="text" class="form-control" name="suspendStrategy" value="{{suspendStrategy}}">
+</div>
+<div class="form-group">
+  <label class="col-sm-3">Suspend Strategy</label>
+  <div class="col-sm-9">
+    <div id="suspendRegion"></div>
+    <p class="help-block validation"></p>
   </div>
-  <div class="form-group">
-    <label>Load Strategy</label>
-    <input type="text" class="form-control" name="loadStrategy" value="{{loadStrategy}}">
+</div>
+<div class="form-group">
+  <label class="col-sm-3">Scheduling Algorithm</label>
+  <div class="col-sm-9">
+    <div id="schedulingRegion"></div>
+    <p class="help-block validation"></p>
+  </div>
+</div>
+<div class="divider"></div>
+<div class="form-group">
+  <label class="col-sm-3">Farms</label>
+  <div id="farmsRegion" class="col-sm-9"></div>
+</div>
+<div class="form-group">
+  <div class="col-sm-3">
+  </div>
+  <div class="col-sm-9">
+    <button id="newFarm" type="button" class="btn btn-success btn-xs"><span class="fa fa-plus"></span>&nbsp;&nbsp;New Farm</button>
+    <p class="help-block validation"></p>
+    <p class="help-block">These are the load balancing farms that should be available to ConDep.</p>
   </div>
 </div>

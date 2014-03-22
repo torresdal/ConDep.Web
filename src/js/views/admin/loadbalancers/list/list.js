@@ -8,6 +8,18 @@ module.exports = Marionette.CompositeView.extend({
 	tagName: 'table',
   className: 'table table-hover table-col-btns',
   itemView: ItemView,
-  emptyView: NoItemsView
+  emptyView: NoItemsView,
+
+  initialize: function() {
+    this.scheduleCol = this.options.scheduleCol;
+    this.suspendCol = this.options.suspendCol;
+  },
+
+  itemViewOptions: function(model, index) {
+    return {
+      scheduleCol: this.scheduleCol,
+      suspendCol: this.suspendCol
+    }
+  }
 
 });

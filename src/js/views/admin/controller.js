@@ -10,7 +10,10 @@ var Marionette              = require('backbone.marionette'),
     HelpView                = require('./help/help_view'),
     NavView                 = require('./nav/nav_view'),
 		$                       = require('jquery'),
-    LoadBalancers           = require('./loadbalancers/models/loadBalancerCollection');
+    LoadBalancers           = require('./loadbalancers/models/loadBalancerCollection'),
+    SchedulingAlgorithms    = require('./loadbalancers/models/schedulingAlgorithmCollection'),
+    SuspendStrategies       = require('./loadbalancers/models/suspendStrategyCollection'),
+    ProgressView            = require('./common/progress/progress_view');
 
 module.exports = Marionette.Controller.extend({
   showHome: function() {
@@ -19,14 +22,48 @@ module.exports = Marionette.Controller.extend({
   },
 
   showLoadbalancers: function () {
+    var that = this;
+
     var collection = new LoadBalancers();
-    collection.fetch();
+    var scheduleCol = new SchedulingAlgorithms();
+    var suspendCol = new SuspendStrategies();
 
     this.showNav();
     this.selectMenuItem("#loadbalancers");
 
-    this.loadBalancerView = this.loadBalancerView || new LoadBalancersView({collection: collection});
-    this.adminView.mainRegion.show(this.loadBalancerView);
+    this.adminView.mainRegion.show(new ProgressView());
+
+    collection.fetch({
+      success: function(collection, response, options) {
+        that.loadBalancerView = that.loadBalancerView || new LoadBalancersView({
+          collection: collection,
+          scheduleCol: scheduleCol,
+          suspendCol: suspendCol
+        });
+
+        that.adminView.mainRegion.show(that.loadBalancerView);
+        that.hideProgress();
+      },
+      error: function(collection, response, options) {
+        console.log("Failed to load load balancers.");
+        that.hideProgress();
+      }
+    });
+
+    suspendCol.fetch({
+        error: function(collection, response, options) {
+            console.log("Failed to load schedulingAlgorithms.");
+            console.log(response);
+        }
+    });
+
+    scheduleCol.fetch({
+        error: function(collection, response, options) {
+            console.log("Failed to load schedulingAlgorithms.");
+            console.log(response);
+        }
+    });
+
   },
 
   showTiers: function () {
@@ -83,6 +120,16 @@ module.exports = Marionette.Controller.extend({
     this.selectMenuItem("#help");
     this.helpView = this.helpView || new HelpView();
     this.adminView.mainRegion.show(this.helpView);
+  },
+
+  showProgress: function() {
+    $('#noItemsMessage').hide();
+    $('#progressMessage').show();
+  },
+
+  hideProgress: function() {
+    $('#noItemsMessage').show();
+    $('#progressMessage').hide();
   },
 
   showNav: function() {

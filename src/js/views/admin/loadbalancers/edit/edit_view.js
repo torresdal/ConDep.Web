@@ -1,7 +1,8 @@
 // edit_view.js
 
 var ModalView			= require('modal'),
-		EditFormView 	= require('./edit_form_view');
+		EditFormView 	= require('./edit_form_view'),
+		Validation 		= require('backbone.validation');
 
 module.exports = ModalView.extend({
 
@@ -9,11 +10,19 @@ module.exports = ModalView.extend({
 		ModalView.prototype.initialize.call(this, options);
 
 		this.removeModelOnCancel = options.removeModelOnCancel || false;
+    this.scheduleCol = this.options.scheduleCol;
+    this.suspendCol = this.options.suspendCol;
 
-		this.editForm = new EditFormView({ model: this.model });
+		this.editForm = new EditFormView({ 
+			model: this.model, 
+      scheduleCol: this.scheduleCol,
+      suspendCol: this.suspendCol, 
+		});
 
-		this.on('form:submitted', function(model, data){
-			this.storeModel(model, data);
+		// Validation.bind(this);
+
+		this.on('form:submitted', function(model, data, hideForm){
+			this.storeModel(model, data, hideForm);
 		}, this);
 
 		this.on('form:cancelled', function(model){
@@ -21,9 +30,12 @@ module.exports = ModalView.extend({
 		}, this);
 	},
 
-	storeModel: function(model, data) {
+	storeModel: function(model, data, hideForm) {
     model.set(data);
-    model.save();
+    if(this.model.isValid(true)){
+	    model.save();
+	    hideForm();
+    }
 	},
 
 	cancelModel: function(model) {
@@ -34,6 +46,8 @@ module.exports = ModalView.extend({
 
 	onRender: function() {
 		this.mainRegion.show(this.editForm);
+		this.$("#modalTitleIcon").addClass("fa fa-tasks");
+
 	}
 
 });

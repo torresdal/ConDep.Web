@@ -12,7 +12,8 @@ module.exports =  Marionette.Layout.extend({
   regions: {
   	modalRegion: "#modalRegion",
   	wizRegion: "#wizRegion",
-  	listRegion: "#listRegion"
+  	listRegion: "#listRegion",
+    progressRegion: "#progressRegion"
   },
   events: {
   	"click #newLoadBalancer": "newLoadBalancer"
@@ -20,12 +21,21 @@ module.exports =  Marionette.Layout.extend({
 
   initialize: function() {
     ConDep.core.vent.on("env:item:clicked", this.editLoadBalancer, this);
+
+    this.scheduleCol = this.options.scheduleCol;
+    this.suspendCol = this.options.suspendCol;
   },
 
 	onRender: function(){
-		var listView = new ListView({ collection: this.collection });
+		var listView = new ListView({ 
+      collection: this.collection,
+      scheduleCol: this.scheduleCol,
+      suspendCol: this.suspendCol 
+    });
 
     this.listRegion.show(listView);
+
+    this.delegateEvents();
 	},
 
   editLoadBalancer: function(ev, lbModel) {
@@ -33,7 +43,9 @@ module.exports =  Marionette.Layout.extend({
 
     var editView = new EditView({ 
       title: title,
-      model: lbModel   
+      model: lbModel,   
+      scheduleCol: this.scheduleCol,
+      suspendCol: this.suspendCol
     });
 
     this.modalRegion.show(editView);
@@ -43,10 +55,12 @@ module.exports =  Marionette.Layout.extend({
 	newLoadBalancer: function() {
     var model = new LoadBalancerModel();
     this.collection.add(model);
-    
+
     var editView = new EditView({ 
       title: "New Load Balancer",
       model: model,
+      scheduleCol: this.scheduleCol,
+      suspendCol: this.suspendCol, 
       removeModelOnCancel: true
     });
     
